@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://qcagqecamniv"]
+
+[ext_resource type="Script" uid="uid://dw60jwicwctye" path="res://scripts/dog.gd" id="1_aqts3"]
+[ext_resource type="Texture2D" uid="uid://lheafn4o3xhv" path="res://art/dog.png" id="2_sft77"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xm2m"]
+
+[node name="Dog" type="CharacterBody2D"]
+script = ExtResource("1_aqts3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_sft77")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_0xm2m")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ba3lvi8rsbpai"]
+
+[ext_resource type="PackedScene" uid="uid://qcagqecamniv" path="res://prefabs/dog.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://diocjmk07pbfa" path="res://scripts/cam.gd" id="3_1bvp3"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_7dm0k"]
+vertices = PackedVector2Array(1034.2813, 812.8828, -878.22656, 791.10156, -918.75, -854.14844, 1083.6875, -884.8281)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-929, -864, 1094, -895, 1044, 823, -888, 801)])
+
+[node name="Main" type="Node2D"]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_7dm0k")
+
+[node name="Dog" parent="." instance=ExtResource("1_0xm2m")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_1bvp3")

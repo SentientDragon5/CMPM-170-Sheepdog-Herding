@@ -11,5 +11,11 @@ config_version=5
 [application]
 
 config/name="Sheepdog-Herding"
+run/main_scene="uid://ba3lvi8rsbpai"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/show_image=false
+config/icon="uid://bq00rghlb51a8"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
