@@ -1,2 +1,32 @@
 # CMPM-170-Sheepdog-Herding
 
+# TODO
+- [ ] art
+	- [x] characters
+		- [x] dog
+		- [x] sheep
+	- [ ] ui
+		- [ ] arrow
+		- [ ] selected
+- [ ] programmning
+	- [ ] navigation
+		- [x] setup navmesh
+		- [ ] use navigation agent
+	- [ ] rts
+		- [ ] selectable dogs
+		- [ ] tell dog where to go
+		- [ ] make dogs affect sheep movement
+	- [ ] sheep
+		- [ ] boids?
+		- [ ] arbitrary movement
+		- [ ] run torwards center of pack
+		- [ ] herd.gd (finds centerpoint and makes sheep move torwards center when "scared")
+	- [ ] camera controller
+		- [ ] average all the points of sheep and dogs and contain all in boundary
+		- [ ] smoothing
+	- [ ] polish
+		- [ ] sfx
+			- [ ] walking
+			- [ ] baaaa
+			- [ ] arf
+		- [ ] menu?
