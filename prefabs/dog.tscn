@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qcagqecamniv"]
+[gd_scene load_steps=6 format=3 uid="uid://qcagqecamniv"]
 
 [ext_resource type="Script" uid="uid://dw60jwicwctye" path="res://scripts/dog.gd" id="1_aqts3"]
 [ext_resource type="Texture2D" uid="uid://lheafn4o3xhv" path="res://art/dog.png" id="2_sft77"]
+[ext_resource type="Texture2D" uid="uid://bopcvq4r677th" path="res://art/circle.svg" id="3_asnll"]
+[ext_resource type="Texture2D" uid="uid://c0kx13j3gb450" path="res://art/arrow-small-down.svg" id="4_6375x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xm2m"]
 
@@ -16,3 +18,14 @@ texture = ExtResource("2_sft77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_0xm2m")
+
+[node name="Selected" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.085, 0.085)
+texture = ExtResource("3_asnll")
+
+[node name="GoalArrow" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1.5258789e-05, -79)
+scale = Vector2(0.076171875, 0.10546875)
+texture = ExtResource("4_6375x")
