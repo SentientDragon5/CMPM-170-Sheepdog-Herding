@@ -11,12 +11,16 @@ func _process(_delta: float) -> void:
 	pass
 
 func _mouse_enter() -> void:
-	print(name, " mouse enter")
+	#print(name, " mouse enter")
 	pass
 	
 func _mouse_exit() -> void:
-	print(name, " mouse exit")
+	#print(name, " mouse exit")
 	pass
 
-func _input_event(_viewport: Viewport, _event: InputEvent, _shape_idx: int) -> void:
-	print(name, " has been clicked")
+func _input_event(_viewport: Viewport, event: InputEvent, _shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				print(name, " has been clicked")
+				pass

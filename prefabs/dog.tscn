@@ -6,6 +6,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xm2m"]
 
 [node name="Dog" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_aqts3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
