@@ -1,20 +1,20 @@
 # CMPM-170-Sheepdog-Herding
 
 # TODO
-- [ ] art
+- [ ] art -> Logan
 	- [x] characters
 		- [x] dog
 		- [x] sheep
-	- [ ] ui
-		- [ ] arrow
-		- [ ] selected
+	- [x] ui
+		- [x] arrow
+		- [x] selected
 - [ ] programmning
-	- [ ] navigation
+	- [x] navigation -> Logan
 		- [x] setup navmesh
-		- [ ] use navigation agent
+		- [x] use navigation agent
 	- [ ] rts
-		- [ ] selectable dogs
-		- [ ] tell dog where to go
+		- [x] selectable dogs -> Logan
+		- [x] tell dog where to go -> Logan
 		- [ ] make dogs affect sheep movement
 	- [ ] sheep
 		- [ ] boids?
