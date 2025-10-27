@@ -1,11 +1,25 @@
 extends Node
 
+var animals;
+var track_speed = 0.5;
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	animals = get_tree().get_nodes_in_group("animal")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	# get avg position from everythnig tagged "cam follow"
+	var sum = Vector2(0,0)
+	var total=0;
+	for animal in animals:
+		sum += animal.position
+		total += 1
+	var avgPos = sum/total
+	
+	self.position.x = move_toward(self.position.x, avgPos.x, track_speed)
+	self.position.y = move_toward(self.position.y, avgPos.x, track_speed)
+	
+	
+	# use get_tree().get_nodes_in_group("cam follow")
+	# move camera to that position
+	# 
 	pass

@@ -13,7 +13,13 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-929, -864, 1094, -895,
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_7dm0k")
 
-[node name="Dog" parent="." instance=ExtResource("1_0xm2m")]
+[node name="Dog" parent="." groups=["animal"] instance=ExtResource("1_0xm2m")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_1bvp3")
+
+[node name="Dog2" parent="." groups=["animal"] instance=ExtResource("1_0xm2m")]
+position = Vector2(-38, 4)
+
+[node name="Dog3" parent="." groups=["animal"] instance=ExtResource("1_0xm2m")]
+position = Vector2(-110, 3)
