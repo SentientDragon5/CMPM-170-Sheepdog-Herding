@@ -1,7 +1,7 @@
 extends Node
 
 var animals;
-var track_speed = 0.5;
+var track_speed = 2;
 
 func _ready() -> void:
 	animals = get_tree().get_nodes_in_group("animal")
@@ -15,8 +15,8 @@ func _process(_delta: float) -> void:
 		total += 1
 	var avgPos = sum/total
 	
-	self.position.x = move_toward(self.position.x, avgPos.x, track_speed)
-	self.position.y = move_toward(self.position.y, avgPos.x, track_speed)
+	self.position.x = lerp(self.position.x, avgPos.x, track_speed * _delta)
+	self.position.y = lerp(self.position.y, avgPos.y, track_speed * _delta)
 	
 	
 	# use get_tree().get_nodes_in_group("cam follow")
