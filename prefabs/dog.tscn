@@ -5,19 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://bopcvq4r677th" path="res://art/circle.svg" id="3_asnll"]
 [ext_resource type="Texture2D" uid="uid://c0kx13j3gb450" path="res://art/arrow-small-down.svg" id="4_6375x"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0xm2m"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_asnll"]
+size = Vector2(24, 40)
 
 [node name="Dog" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_aqts3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_sft77")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_0xm2m")
+shape = SubResource("RectangleShape2D_asnll")
+
+[node name="WolfSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_sft77")
 
 [node name="Selected" type="Sprite2D" parent="."]
 visible = false
@@ -29,3 +28,15 @@ visible = false
 position = Vector2(-1.5258789e-05, -79)
 scale = Vector2(0.076171875, 0.10546875)
 texture = ExtResource("4_6375x")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
+radius = 15.0
+debug_path_custom_color = Color(0.15233874, 4.235506e-06, 0.68286014, 1)
+debug_path_custom_line_width = 2.0
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+radius = 22.94
+avoidance_enabled = false
+
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
