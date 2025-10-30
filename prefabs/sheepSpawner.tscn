@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://cly87dbkfe41d"]
+
+[ext_resource type="PackedScene" uid="uid://c1a456lqgotx0" path="res://prefabs/sheep.tscn" id="1_v2xpj"]
+
+[sub_resource type="GDScript" id="GDScript_75b2l"]
+script/source = "extends Node2D
+
+@export var sheep_scene: PackedScene
+@export var spawn_area: Vector2 = Vector2(800, 600)
+@export var initial_count: int = 10
+
+func _ready():
+	for i in range(initial_count):
+		spawn_sheep()
+
+func spawn_sheep():
+	if sheep_scene == null:
+		push_error(\"No sheep scene assigned to SheepSpawner!\")
+		return
+	var sheep = sheep_scene.instantiate()
+	add_child(sheep)
+	
+	var half_area = spawn_area / 2.0
+	var min = global_position - half_area
+	var max = global_position + half_area
+	var x = randf_range(min.x, max.x)
+	var y = randf_range(min.y, max.y)
+	sheep.global_position = Vector2(x, y)
+"
+
+[node name="SheepSpawner" type="Node2D"]
+script = SubResource("GDScript_75b2l")
+sheep_scene = ExtResource("1_v2xpj")
