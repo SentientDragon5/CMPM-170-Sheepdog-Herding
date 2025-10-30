@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1a456lqgotx0"]
+
+[ext_resource type="Texture2D" uid="uid://bq00rghlb51a8" path="res://art/sheep.png" id="1_h84kf"]
+[ext_resource type="Script" uid="uid://cljsbmiipliu7" path="res://scripts/sheep.gd" id="1_wkwx1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkwx1"]
+radius = 26.119915
+
+[node name="Sheep" type="CharacterBody2D"]
+script = ExtResource("1_wkwx1")
+
+[node name="SheepSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_h84kf")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, -0.5)
+shape = SubResource("CircleShape2D_wkwx1")
+
+[connection signal="area_shape_entered" from="Area2D" to="." method="_on_area_2d_area_shape_entered"]

@@ -41,7 +41,7 @@ func navigate() -> void:
 	)
 	goal_arrow.global_position = agent.target_position
 	agent.velocity = new_velocity
-	wolf_sprite.rotation = new_velocity.angle() - 67.5
+	wolf_sprite.rotation = new_velocity.angle() + deg_to_rad(90)
 
 func _input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("left_click"):
