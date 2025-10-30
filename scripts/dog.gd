@@ -21,7 +21,7 @@ func _ready() -> void:
 	_selected = false
 
 func _physics_process(delta: float) -> void:
-	click_navigation()
+	#click_navigation()
 	navigate()
 	repulse_sheep()
 
@@ -30,13 +30,13 @@ func repulse_sheep() -> void:
 		if body is Sheep:
 			body.run_from_dog(self)
 
-func click_navigation() -> void:
-	if Input.is_action_just_pressed("left_click") and _selected:
-		if not wolf_sprite.is_pixel_opaque(get_local_mouse_position()):
-			_selected = false
-			selected_ui.visible = false
-			agent.target_position  = get_global_mouse_position()
-			goal_arrow.visible = true
+#func click_navigation() -> void:
+	#if Input.is_action_just_pressed("left_click") and _selected:
+		#if not wolf_sprite.is_pixel_opaque(get_local_mouse_position()):
+			#_selected = false
+			#selected_ui.visible = false
+			#agent.target_position  = get_global_mouse_position()
+			#goal_arrow.visible = true
 
 
 func navigate() -> void:
@@ -60,6 +60,16 @@ func _input_event(_viewport, event, _shape_idx):
 			_selected = false
 			selected_ui.visible = false
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if _selected:
+					selected_ui.visible = false
+					agent.target_position  = get_global_mouse_position()
+					goal_arrow.visible = true
+					print("mouse clicked at ", get_global_mouse_position())
+					_selected = false
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	position += safe_velocity * get_physics_process_delta_time() 
