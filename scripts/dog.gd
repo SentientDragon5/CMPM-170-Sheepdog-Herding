@@ -1,9 +1,11 @@
+class_name  Dog
 extends CharacterBody2D
 
 @onready var agent : NavigationAgent2D = $NavigationAgent2D
 
 
 @onready var clickableArea: Area2D = $Area2D
+@onready var repulsion: Area2D = $Repulsion
 
 @onready var wolf_sprite: Sprite2D = $WolfSprite
 @onready var selected_ui: Sprite2D = $Selected
@@ -21,6 +23,12 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	click_navigation()
 	navigate()
+	repulse_sheep()
+
+func repulse_sheep() -> void:
+	for body in repulsion.get_overlapping_bodies():
+		if body is Sheep:
+			body.run_from_dog(self)
 
 func click_navigation() -> void:
 	if Input.is_action_just_pressed("left_click") and _selected:
@@ -54,5 +62,4 @@ func _input_event(_viewport, event, _shape_idx):
 
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
-	position += safe_velocity * get_physics_process_delta_time()
-	
+	position += safe_velocity * get_physics_process_delta_time() 

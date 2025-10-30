@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://qcagqecamniv" path="res://prefabs/dog.tscn" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://diocjmk07pbfa" path="res://scripts/cam.gd" id="3_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://c1a456lqgotx0" path="res://prefabs/sheep.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" path="res://prefabs/sheep.tscn" id="3_h2yge"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7dm0k"]
 vertices = PackedVector2Array(1034.2813, 812.8828, -878.22656, 791.10156, -918.75, -854.14844, 1083.6875, -884.8281)

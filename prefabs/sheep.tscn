@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c1a456lqgotx0"]
+[gd_scene load_steps=4 format=3 uid="uid://ch6wngj040jn"]
 
 [ext_resource type="Texture2D" uid="uid://bq00rghlb51a8" path="res://art/sheep.png" id="1_h84kf"]
 [ext_resource type="Script" uid="uid://cljsbmiipliu7" path="res://scripts/sheep.gd" id="1_wkwx1"]
@@ -8,9 +8,25 @@ radius = 19.235384
 
 [node name="Sheep" type="CharacterBody2D"]
 script = ExtResource("1_wkwx1")
+_speed = 10
 
 [node name="SheepSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_h84kf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_wkwx1")
+
+[node name="RunTimer" type="Timer" parent="."]
+wait_time = 0.8
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "time"
+
+[node name="WanderTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[connection signal="timeout" from="RunTimer" to="." method="_on_run_timer_timeout"]
+[connection signal="timeout" from="WanderTimer" to="." method="_on_wander_timer_timeout"]

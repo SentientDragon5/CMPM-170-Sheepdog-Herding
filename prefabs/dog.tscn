@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://qcagqecamniv"]
+[gd_scene load_steps=7 format=3 uid="uid://qcagqecamniv"]
 
 [ext_resource type="Script" uid="uid://dw60jwicwctye" path="res://scripts/dog.gd" id="1_aqts3"]
 [ext_resource type="Texture2D" uid="uid://lheafn4o3xhv" path="res://art/dog.png" id="2_sft77"]
@@ -8,9 +8,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_asnll"]
 size = Vector2(24, 40)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_asnll"]
+radius = 107.11676
+
 [node name="Dog" type="CharacterBody2D"]
 input_pickable = true
 script = ExtResource("1_aqts3")
+my_color = null
+move_speed = null
+_selected = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_asnll")
@@ -38,5 +44,11 @@ debug_path_custom_line_width = 2.0
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 radius = 22.94
 avoidance_enabled = false
+
+[node name="Repulsion" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Repulsion"]
+shape = SubResource("CircleShape2D_asnll")
+debug_color = Color(0.55507725, 0.430844, 0.92611736, 0.41960785)
 
 [connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
