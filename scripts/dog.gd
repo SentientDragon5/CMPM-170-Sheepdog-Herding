@@ -56,13 +56,3 @@ func _input_event(_viewport, event, _shape_idx):
 func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	position += safe_velocity * get_physics_process_delta_time()
 	
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("sheep"):
-		print("entered")
-		body.start_fleeing_from(self)
-
-func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("sheep"):
-		print("exited")
-		body.stop_fleeing_from(self)
