@@ -15,7 +15,6 @@ contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_wkwx1")
 _speed = 50
-_alignment_speed = 200
 
 [node name="SheepSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_h84kf")
