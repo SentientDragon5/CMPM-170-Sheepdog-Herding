@@ -18,7 +18,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	_direction += _alignment()
 	_direction += _cohesion()
-	#_direction += _separation()
+	_direction += _separation()
 	linear_velocity = _direction.normalized() * _speed
 	rotation = atan2(_direction.y, _direction.x) + deg_to_rad(90)
 	
@@ -50,10 +50,10 @@ func _cohesion() -> Vector2:
 
 	var average_location = Vector2.ZERO
 	for sheep in neighboring_sheep:
-		average_location += sheep.position 
+		average_location += sheep.global_position 
 	average_location /= neighboring_sheep.size()
 		
-	return position.direction_to(average_location) 
+	return global_position.direction_to(average_location) 
 
 func _separation() -> Vector2: 
 	if neighboring_sheep.size() == 0:
@@ -61,7 +61,7 @@ func _separation() -> Vector2:
 
 	var separation = Vector2.ZERO
 	for sheep in neighboring_sheep:
-		separation += (position - sheep.position / position.distance_to(sheep.position))
+		separation += ((global_position - sheep.global_position) / clamp(global_position.distance_to(sheep.global_position), 0.01 , INF))
 	separation /= neighboring_sheep.size()
 	return separation
 

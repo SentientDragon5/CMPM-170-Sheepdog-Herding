@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1a456lqgotx0"]
+
+[ext_resource type="Texture2D" uid="uid://bq00rghlb51a8" path="res://art/sheep.png" id="1_h84kf"]
+[ext_resource type="Script" uid="uid://cljsbmiipliu7" path="res://scripts/sheep.gd" id="1_wkwx1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkwx1"]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_22co1"]
+radius = 84.00595
+
+[node name="Sheep" type="RigidBody2D" groups=["sheep"]]
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_wkwx1")
+_speed = 100
+_cohesion_multiplier = 20
+
+[node name="SheepSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_h84kf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_wkwx1")
+
+[node name="Detection" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
+shape = SubResource("CircleShape2D_22co1")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
