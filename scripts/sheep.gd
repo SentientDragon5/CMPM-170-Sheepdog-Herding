@@ -4,6 +4,7 @@ extends RigidBody2D
 @export var _alignment_multiplier = 2
 @export var _cohesion_multiplier = 2
 @export var _separation_multiplier = 2
+@export var _avoid_dog_multiplier = 2
 var _direction = Vector2()
 
 var threatening_dogs = []
@@ -24,34 +25,44 @@ func _on_detection_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("Sheep")):
 		neighboring_sheep.append(body)
 	else:
-		_direction = -_direction
+		if (body.is_in_group("Dog")):
+			threatening_dogs.append(body)
 
 func _on_detection_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Sheep")):
 		neighboring_sheep.erase(body)
+	else:
+		if (body.is_in_group("Dog")):
+			threatening_dogs.erase(body)
 		
-func _flock_behavior() -> Vector2:
-	if neighboring_sheep.size() == 0:
-		return _direction
-	
+func _flock_behavior() -> Vector2:	
 	var alignment_vector = Vector2.ZERO
 	var cohesion_vector = Vector2.ZERO 
 	var separation_vector = Vector2.ZERO
+	var avoid_dog_vector = Vector2.ZERO
+		
+	if (neighboring_sheep.size() > 0):
+		for sheep in neighboring_sheep:
+			alignment_vector += sheep.linear_velocity 
+			cohesion_vector += sheep.global_position
+			separation_vector += ((global_position - sheep.global_position) / clamp(global_position.distance_to(sheep.global_position), 0.01 , INF))
+		
+		alignment_vector /= neighboring_sheep.size() 
+		cohesion_vector = global_position.direction_to(cohesion_vector/neighboring_sheep.size())
+		separation_vector /= neighboring_sheep.size()
+		
+		alignment_vector *= _alignment_multiplier 
+		cohesion_vector *= _cohesion_multiplier 
+		separation_vector *= _separation_multiplier 
 	
-	for sheep in neighboring_sheep:
-		alignment_vector += sheep.linear_velocity 
-		cohesion_vector += sheep.global_position
-		separation_vector += ((global_position - sheep.global_position) / clamp(global_position.distance_to(sheep.global_position), 0.01 , INF))
+	if (threatening_dogs.size() > 0):
+		for dog in threatening_dogs:
+			avoid_dog_vector += global_position - dog.global_position
+			
+		avoid_dog_vector /= threatening_dogs.size()
+		avoid_dog_vector *= _avoid_dog_multiplier
 	
-	alignment_vector /= neighboring_sheep.size() 
-	cohesion_vector = global_position.direction_to(cohesion_vector/neighboring_sheep.size())
-	separation_vector /= neighboring_sheep.size()
-	
-	alignment_vector *= _alignment_multiplier 
-	cohesion_vector *= _cohesion_multiplier 
-	separation_vector *= _separation_multiplier 
-	
-	return alignment_vector + cohesion_vector + separation_vector
+	return alignment_vector + cohesion_vector + separation_vector + avoid_dog_vector
 
 # backup reflection
 func _on_body_entered(body: Node) -> void:
