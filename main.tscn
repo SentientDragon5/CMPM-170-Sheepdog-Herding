@@ -14,9 +14,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-929, -864, 1094, -895,
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_7dm0k")
 
-[node name="Dog" parent="." groups=["animal"] instance=ExtResource("1_0xm2m")]
+[node name="Dog" parent="." groups=["Dog", "animal"] instance=ExtResource("1_0xm2m")]
 
-[node name="Dog2" parent="." groups=["animal"] instance=ExtResource("1_0xm2m")]
+[node name="Dog2" parent="." groups=["Dog", "animal"] instance=ExtResource("1_0xm2m")]
 position = Vector2(-109, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -24,3 +24,4 @@ script = ExtResource("3_1bvp3")
 
 [node name="SheepSpawner" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(-54, 0)
+initial_count = 30
