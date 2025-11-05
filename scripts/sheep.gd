@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	#_direction = _alignment()
+	_direction = _alignment()
 	linear_velocity = _direction.normalized() * _speed
 	rotation = atan2(_direction.y, _direction.x) + deg_to_rad(90)
 	
@@ -28,14 +28,14 @@ func _on_detection_body_entered(body: Node2D) -> void:
 		
 func _on_detection_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Sheep")):
-		for i in neighboring_sheep.length():
-			if neighboring_sheep[i].name == body.name:
-				neighboring_sheep.remove_at(i)
+		neighboring_sheep.erase(body)
 	
 func _alignment() -> Vector2: 
+	if neighboring_sheep.size() == 0:
+		return _direction
 	var average_direction = Vector2.ZERO
 	for sheep in neighboring_sheep:
-		average_direction += sheep.velocity 
+		average_direction += sheep.linear_velocity 
 	average_direction /= neighboring_sheep.size()
 	return average_direction
 	
