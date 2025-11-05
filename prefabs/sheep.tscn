@@ -7,23 +7,25 @@
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_22co1"]
-radius = 57.14018
+radius = 84.00595
 
 [node name="Sheep" type="RigidBody2D" groups=["sheep"]]
 gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_wkwx1")
-_speed = 50
-_alignment_speed = 200
+_speed = 100
+_cohesion_multiplier = 20
 
 [node name="SheepSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_h84kf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_wkwx1")
 
 [node name="Detection" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_22co1")

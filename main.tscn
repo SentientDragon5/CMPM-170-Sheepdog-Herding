@@ -7824,4 +7824,4 @@ script = ExtResource("3_1bvp3")
 
 [node name="SheepSpawner" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(-54, 0)
-initial_count = 30
+initial_count = 100

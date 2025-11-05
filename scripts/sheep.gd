@@ -1,7 +1,9 @@
 extends RigidBody2D
 
 @export var _speed = 20
-@export var _alignment_speed = 40
+@export var _alignment_multiplier = 40
+@export var _cohesion_multiplier = 40
+@export var _separation_multiplier = 40
 var _direction = Vector2()
 
 var threatening_dogs = []
@@ -14,7 +16,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	_direction += _alignment().normalized() * _alignment_speed
+	_direction += _alignment()
+	_direction += _cohesion()
+	#_direction += _separation()
 	linear_velocity = _direction.normalized() * _speed
 	rotation = atan2(_direction.y, _direction.x) + deg_to_rad(90)
 	
@@ -40,7 +44,26 @@ func _alignment() -> Vector2:
 		
 	return average_velocity 
 	
+func _cohesion() -> Vector2: 
+	if neighboring_sheep.size() == 0:
+		return _direction
 
+	var average_location = Vector2.ZERO
+	for sheep in neighboring_sheep:
+		average_location += sheep.position 
+	average_location /= neighboring_sheep.size()
+		
+	return position.direction_to(average_location) 
+
+func _separation() -> Vector2: 
+	if neighboring_sheep.size() == 0:
+		return _direction
+
+	var separation = Vector2.ZERO
+	for sheep in neighboring_sheep:
+		separation += (position - sheep.position / position.distance_to(sheep.position))
+	separation /= neighboring_sheep.size()
+	return separation
 
 # backup reflection
 func _on_body_entered(body: Node) -> void:
