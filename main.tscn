@@ -7814,14 +7814,24 @@ tile_set = SubResource("TileSet_1bvp3")
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_7dm0k")
 
-[node name="Dog" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-
-[node name="Dog2" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-position = Vector2(-109, 0)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_1bvp3")
 
 [node name="SheepSpawner" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(-54, 0)
 initial_count = 100
+
+[node name="Dog" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
+position = Vector2(17, -141)
+
+[node name="Dog2" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
+position = Vector2(-125, -75)
+
+[node name="Dog3" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
+position = Vector2(180, -62)
+
+[node name="Dog4" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
+position = Vector2(119, 111)
+
+[node name="Dog5" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
+position = Vector2(-111, 124)

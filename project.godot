@@ -16,6 +16,11 @@ config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/show_image=false
 config/icon="uid://lheafn4o3xhv"
 
+[global_group]
+
+Dog=""
+Sheep=""
+
 [input]
 
 left_click={

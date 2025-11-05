@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var selected_ui: Sprite2D = $Selected
 @onready var goal_arrow: Sprite2D = $GoalArrow
 
-@export var my_color : Color = Color.RED
 @export var move_speed : float = 500.0
 
 @export var _selected : bool = false
@@ -14,6 +13,7 @@ extends CharacterBody2D
 		
 func _ready() -> void:
 	_selected = false
+	add_to_group("Dog")
 
 func _physics_process(_delta: float) -> void:
 	click_navigation()
@@ -25,8 +25,6 @@ func click_navigation() -> void:
 			selected_ui.visible = false
 			agent.target_position  = get_global_mouse_position()
 			goal_arrow.visible = true
-
-
 
 func navigate() -> void:
 	if agent.is_navigation_finished():
@@ -46,7 +44,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
 	
 
 
-func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
 	if event.is_action_released("left_click"):
 		if not _selected:
 			_selected = true
