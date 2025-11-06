@@ -7870,22 +7870,23 @@ shape = SubResource("RectangleShape2D_lquwl")
 position = Vector2(17, -141)
 
 [node name="Dog2" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-position = Vector2(-125, -75)
+position = Vector2(-140, -99)
 
 [node name="Dog3" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-position = Vector2(180, -62)
+position = Vector2(188, -74)
 
 [node name="Dog4" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-position = Vector2(119, 111)
+position = Vector2(-94, 63)
 
 [node name="Dog5" parent="." groups=["Dog"] instance=ExtResource("1_0xm2m")]
-position = Vector2(-111, 124)
+position = Vector2(108, 85)
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 2
 script = ExtResource("7_272bh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI"]

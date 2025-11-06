@@ -28,7 +28,7 @@ func _on_detection_body_entered(body: Node2D) -> void:
 		if (body.is_in_group("Dog")):
 			threatening_dogs.append(body)
 		else:
-			if (body.name == ("Rocks") or body.name == ("Fence")):
+			if (body.name == ("Rocks")):
 				_direction = -_direction
 
 func _on_detection_body_exited(body: Node2D) -> void:
