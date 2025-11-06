@@ -7814,9 +7814,9 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_7mycd")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_7dm0k"]
-vertices = PackedVector2Array(350, -451.03125, 350, -652, 1149.0391, -958, 1156.9531, 946.9375, -1117.9688, -958.9922, -326, -652, -1114.0234, 935.0469, -326, -448.96875)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 2, 1, 5), PackedInt32Array(0, 3, 6, 7), PackedInt32Array(7, 6, 4, 5)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1128, -969, 1159, -968, 1167, 957, -1124, 945)])
+vertices = PackedVector2Array(1156.9531, 946.9375, -1114.0625, 935.0469, -1125.9297, -942.0625, 1149.0391, -957.9297)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1136, -952, 1159, -968, 1167, 957, -1124, 945)])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
 size = Vector2(634, 153)
@@ -7838,11 +7838,8 @@ tile_map_data = PackedByteArray("AADs/9j/AAACAAAAAADt/9j/AAABAAEAAADu/9j/AAABAAE
 tile_set = SubResource("TileSet_272bh")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 navigation_polygon = SubResource("NavigationPolygon_7dm0k")
-
-[node name="FenceCutout" type="Polygon2D" parent="NavigationRegion2D"]
-color = Color(1, 1, 1, 0)
-polygon = PackedVector2Array(-316, -642, -316, -459, 340, -461, 340, -642)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_1bvp3")
