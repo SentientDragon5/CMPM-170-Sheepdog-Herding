@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://ba3lvi8rsbpai"]
+[gd_scene load_steps=19 format=4 uid="uid://ba3lvi8rsbpai"]
 
 [ext_resource type="PackedScene" uid="uid://qcagqecamniv" path="res://prefabs/dog.tscn" id="1_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://b5sen0pi0dgtw" path="res://art/fence_00.png" id="2_lquwl"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c62i1qjhfo220" path="res://art/spritesheet_complete.png" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://qh3qu7eape1n" path="res://scripts/sheep_counter.gd" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://cihm1go1x1l0r" path="res://scripts/ui.gd" id="7_272bh"]
+[ext_resource type="Script" uid="uid://cdrbhsx8gq15h" path="res://scripts/toggle_instructions.gd" id="8_5vw27"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
 texture = ExtResource("4_1bvp3")
@@ -7935,5 +7936,49 @@ text = "Sheeps: 0/100"
 label_settings = SubResource("LabelSettings_272bh")
 horizontal_alignment = 1
 
+[node name="PanelContainer3" type="PanelContainer" parent="UI/CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -143.0
+offset_right = 220.0
+offset_bottom = -32.3125
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PanelContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 0
+
+[node name="Instructions" type="Label" parent="UI/CanvasLayer/PanelContainer3/MarginContainer"]
+layout_mode = 2
+text = "LEFT CLICK ON DOGS TO MOVE
+MIDDLE MOUSE TO MOVE CAMERA
+SCROLL TO ZOOM CAMERA"
+label_settings = SubResource("LabelSettings_272bh")
+horizontal_alignment = 1
+
+[node name="ToggleInstructions" type="Button" parent="UI/CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -44.0
+offset_right = -10.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Toggle Instructions"
+script = ExtResource("8_5vw27")
+
 [connection signal="body_entered" from="SheepCounter" to="SheepCounter" method="_on_body_entered"]
 [connection signal="body_exited" from="SheepCounter" to="SheepCounter" method="_on_body_exited"]
+[connection signal="button_up" from="UI/CanvasLayer/ToggleInstructions" to="UI/CanvasLayer/ToggleInstructions" method="_on_button_up"]
