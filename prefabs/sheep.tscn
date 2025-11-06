@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1a456lqgotx0"]
+[gd_scene load_steps=6 format=3 uid="uid://c1a456lqgotx0"]
 
 [ext_resource type="Texture2D" uid="uid://bq00rghlb51a8" path="res://art/sheep.png" id="1_h84kf"]
 [ext_resource type="Script" uid="uid://cljsbmiipliu7" path="res://scripts/sheep.gd" id="1_wkwx1"]
+[ext_resource type="AudioStream" uid="uid://n4t500bpj637" path="res://sheep.mp3" id="3_22co1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wkwx1"]
 radius = 13.0
@@ -30,6 +31,9 @@ shape = SubResource("CircleShape2D_wkwx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 shape = SubResource("CircleShape2D_22co1")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_22co1")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]

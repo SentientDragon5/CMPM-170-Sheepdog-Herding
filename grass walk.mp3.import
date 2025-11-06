@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b7pyldpk16jt2"
+path="res://.godot/imported/grass walk.mp3-3226eb4d2701d887ab9f136b382232c8.mp3str"
+
+[deps]
+
+source_file="res://grass walk.mp3"
+dest_files=["res://.godot/imported/grass walk.mp3-3226eb4d2701d887ab9f136b382232c8.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

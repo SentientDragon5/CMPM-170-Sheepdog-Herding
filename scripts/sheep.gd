@@ -10,10 +10,28 @@ var _direction = Vector2()
 var threatening_dogs = []
 var neighboring_sheep = []
 
+@onready var audio_player = $AudioStreamPlayer
+
 func _ready() -> void:
 	_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 	add_to_group("Sheep")
+	#_play_random_pitch_sheep_sound()
+
+	var sound_timer = Timer.new()
+	sound_timer.wait_time = randf_range(2.0, 120.0)
+	sound_timer.one_shot = false
+	add_child(sound_timer)
+	# Connect with Callable
+	sound_timer.connect("timeout", Callable(self, "_play_random_pitch_sheep_sound"))
+
+	# Start the timer
+	sound_timer.start()
 	
+	
+func _play_random_pitch_sheep_sound() -> void:
+	# Random pitch between 0.8 (lower) and 1.2 (higher)
+	audio_player.pitch_scale = randf_range(0.4, 1.8)
+	audio_player.play()
 
 
 func _physics_process(_delta: float) -> void:

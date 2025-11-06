@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 @export var _selected : bool = false
 
+@onready var audio_player = $AudioStreamPlayer2D
+
 		
 func _ready() -> void:
 	_selected = false
@@ -49,6 +51,10 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
 		if not _selected:
 			_selected = true
 			selected_ui.visible = true
+			
+			# Play dog sound with random pitch on selection
+			#audio_player.pitch_scale = randf_range(0.8, 1.2)
+			audio_player.play()
 		else:
 			_selected = false
 			selected_ui.visible = false
