@@ -14,8 +14,11 @@ gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 4
 script = ExtResource("1_wkwx1")
-_speed = 50
-_avoid_dog_multiplier = 100
+_speed = 25
+_alignment_multiplier = 1
+_cohesion_multiplier = 1
+_separation_multiplier = 1
+_avoid_dog_multiplier = 1
 
 [node name="SheepSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_h84kf")

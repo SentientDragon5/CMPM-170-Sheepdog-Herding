@@ -17,12 +17,14 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
-	_direction += _flock_behavior()
+	var desired_direction = _flock_behavior().normalized()
+	if (desired_direction != Vector2.ZERO):
+		_direction = desired_direction
 	linear_velocity = _direction.normalized() * _speed
 	rotation = atan2(_direction.y, _direction.x) + deg_to_rad(90)
 	
 func _on_detection_body_entered(body: Node2D) -> void:
-	if(body.is_in_group("Sheep")):
+	if(body.is_in_group("Sheep") and body != self):
 		neighboring_sheep.append(body)
 	else:
 		if (body.is_in_group("Dog")):
@@ -64,6 +66,7 @@ func _flock_behavior() -> Vector2:
 			
 		avoid_dog_vector /= threatening_dogs.size()
 		avoid_dog_vector *= _avoid_dog_multiplier
+
 	
 	return alignment_vector + cohesion_vector + separation_vector + avoid_dog_vector
 
