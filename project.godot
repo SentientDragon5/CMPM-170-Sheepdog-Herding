@@ -21,6 +21,10 @@ config/icon="uid://lheafn4o3xhv"
 Dog=""
 Sheep=""
 
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
 [input]
 
 left_click={

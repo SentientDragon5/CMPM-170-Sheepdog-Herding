@@ -7856,7 +7856,7 @@ script = ExtResource("3_1bvp3")
 
 [node name="SheepSpawner" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(-54, 0)
-initial_count = 30
+initial_count = 100
 
 [node name="SheepCounter" type="Area2D" parent="."]
 position = Vector2(0, -469)
@@ -7908,7 +7908,7 @@ theme_override_constants/margin_right = 5
 [node name="Goal" type="Label" parent="UI/CanvasLayer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PUT THE SHEEPS IN THE PEN"
+text = "PUT THE FRIES IN THE BAG"
 label_settings = SubResource("LabelSettings_7mycd")
 horizontal_alignment = 1
 

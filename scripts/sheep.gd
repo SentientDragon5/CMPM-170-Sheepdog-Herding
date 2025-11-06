@@ -28,7 +28,7 @@ func _on_detection_body_entered(body: Node2D) -> void:
 		if (body.is_in_group("Dog")):
 			threatening_dogs.append(body)
 		else:
-			if (body.name == ("Rocks")):
+			if (body.name == ("Rocks") or body.name == ("Fence")):
 				_direction = -_direction
 
 func _on_detection_body_exited(body: Node2D) -> void:
@@ -69,5 +69,5 @@ func _flock_behavior() -> Vector2:
 
 # backup reflection
 func _on_body_entered(body: Node) -> void:
-	if (body.name == "Rocks"):
+	if (body.name == "Rocks" or body.name == "Fence"):
 		_direction = -_direction
