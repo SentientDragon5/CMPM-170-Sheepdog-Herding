@@ -10,7 +10,8 @@ extends CharacterBody2D
 
 @export var _selected : bool = false
 
-@onready var audio_player = $AudioStreamPlayer2D
+@onready var audio_player_bark = $AudioStreamPlayer2DBark
+@onready var audio_player_walk = $AudioStreamPlayer2DWalk
 
 		
 func _ready() -> void:
@@ -31,7 +32,13 @@ func click_navigation() -> void:
 func navigate() -> void:
 	if agent.is_navigation_finished():
 		goal_arrow.visible = false
+		if audio_player_walk.playing:
+			audio_player_walk.stop()  # stop walking sound when agent stops
 		return
+		
+	if not audio_player_walk.playing:
+		audio_player_walk.play()
+		
 	var next_path_position: Vector2 = agent.get_next_path_position()
 	var new_velocity:Vector2 = (
 		global_position.direction_to(next_path_position) * move_speed
@@ -54,7 +61,7 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx) -> void:
 			
 			# Play dog sound with random pitch on selection
 			#audio_player.pitch_scale = randf_range(0.8, 1.2)
-			audio_player.play()
+			audio_player_bark.play()
 		else:
 			_selected = false
 			selected_ui.visible = false
