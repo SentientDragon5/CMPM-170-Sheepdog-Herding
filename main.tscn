@@ -7910,7 +7910,7 @@ theme_override_constants/margin_right = 5
 [node name="Goal" type="Label" parent="UI/CanvasLayer/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "PUT THE SHEEPS IN THE PEN"
+text = "PUT THE SHEEPS IN THE FENCE"
 label_settings = SubResource("LabelSettings_7mycd")
 horizontal_alignment = 1
 
@@ -7958,11 +7958,10 @@ theme_override_constants/margin_bottom = 0
 
 [node name="Instructions" type="Label" parent="UI/CanvasLayer/PanelContainer3/MarginContainer"]
 layout_mode = 2
-text = "LEFT CLICK ON DOGS TO MOVE
-MIDDLE MOUSE TO MOVE CAMERA
-SCROLL TO ZOOM CAMERA"
+text = "1. LEFT CLICK ON DOGS TO MOVE
+2. MIDDLE MOUSE & DRAG TO MOVE CAMERA
+3. SCROLL MOUSE WHEEL TO ZOOM CAMERA"
 label_settings = SubResource("LabelSettings_272bh")
-horizontal_alignment = 1
 
 [node name="ToggleInstructions" type="Button" parent="UI/CanvasLayer"]
 anchors_preset = 3
